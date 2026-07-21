@@ -2,50 +2,48 @@
 
 - **Slug**: algorithm-problem-labeling
 - **Created**: 2026-07-21
-- **Inputs used**: intake.md, research.md
+- **Inputs used**: intake.md, research.md, 이전 concept.md/decision.md, 사용자 재정의 답변
 
 ## Problem Statement
 
-Job seekers preparing for technical/coding-test interviews (취업준비생) need to understand the full landscape of algorithm problem *types* they may encounter, but authoritative problem sources (BOJ/solved.ac, 프로그래머스, LeetCode, Codeforces, etc.) each expose their own partial, mutually incompatible tagging and difficulty schemes — no single, unified, cross-source taxonomy exists today. As a result, a learner who wants comprehensive, systematic type coverage must manually reconcile fragmented labels across multiple sites, or pay for a commercial product that has already done so.
+개인 학습자(사용자 본인)가 알고리즘 문제 유형을 체계적으로 이해하고 학습 계획을 세우려면, "현존하는 모든 알고리즘 문제에 적용 가능한" 포괄적인 라벨(유형) 집합이 필요하다. 그러나 이런 포괄적 라벨 집합은 어느 한 곳에도 정리되어 있지 않다 — BOJ/solved.ac, 프로그래머스, LeetCode, Codeforces 등 각 공신력 있는 출처가 부분적이고 서로 호환되지 않는 자체 분류 체계만 갖고 있어, 학습자가 이를 스스로 취합해야 하는 부담이 있다.
+
+> **범위 재정의(중요)**: 이 프로젝트의 목적은 개별 문제를 "보고" 라벨을 "도출"하는 라벨링 작업이 아니라, 가장 공신력 있는 출처의 분류 체계를 그대로 채택/취합하여 만든 **라벨 집합 그 자체**를 만드는 것이다. 개별 문제에 라벨을 붙이는 것은 목적이 아니다.
 
 ## Affected Users & Stakeholders
 
-- **Users**: 취업준비생 (job seekers/candidates preparing for coding tests and technical interviews) — the people who must plan their study around problem types and currently do so by cross-referencing multiple, inconsistently-labeled sources. [source: research.md "Users & Demand"]
+- **Users**: 사용자 본인 1인 — 개인 학습용으로만 사용하며, 타인에게 공유/배포할 계획 없음. (사용자 확인: "오직 나만 쓸거야")
 - **Stakeholders**:
-  - Project owner/builder (the user running this assessment) — decides scope, bears build/legal/maintenance cost. [NEEDS CLARIFICATION: solo project or on behalf of a team/organization? — carried from intake.md]
-  - Source platforms (BOJ/acmicpc.net, 프로그래머스, LeetCode, Codeforces, solved.ac) — hold the underlying problem data and existing tag systems; their ToS/API availability gates how this can be built. [source: research.md "Data & Constraints"]
-  - Existing commercial competitors (Codetree, AlgoExpert) and open-source maintainers (`tony9402/baekjoon`, LeetCode classifier repos, solved.ac community) — indirect stakeholders whose prior work defines the bar for differentiation. [source: research.md "Prior Art"]
+  - 출처가 되는 플랫폼(BOJ/acmicpc.net, solved.ac, 프로그래머스, LeetCode, Codeforces 등) — 개인 비공개 용도라도 데이터 수집 방식(API/스크래핑)이 각 플랫폼의 이용약관 영향을 받음. [source: research.md "Data & Constraints"]
+  - [NEEDS CLARIFICATION: 사용자 본인 외에 이 결과물을 검토/사용할 다른 이해관계자가 있는지 — 현재로선 없음으로 가정.]
 
 ## Goals
 
-- Comprehensive coverage: label the range of algorithm problem types job seekers actually encounter, spanning multiple authoritative sources rather than a single platform. [source: intake.md restated idea]
-- A **unified, cross-platform taxonomy** — the one thing research confirmed does *not* yet exist anywhere (each source uses its own incompatible tags/difficulty scale). This is the clearest candidate differentiator versus existing prior art. [source: research.md "Evidence Against the Idea"]
-- Labels grounded in, or traceable to, authoritative/credible sources ("공신력 있는 곳") rather than the builder's own unvalidated guesses.
+- 가장 공신력 있는 출처(들)의 기존 분류 체계를 최대한 그대로 반영하여, "존재하는 모든 알고리즘 문제에 적용 가능한" 포괄적 라벨(유형) 집합을 구축한다 — 새로운 분류 체계를 창작하는 것이 아니라 권위 있는 기존 체계를 채택/취합하는 것이 핵심. (사용자 확인: "가장 공신력있는 사이트나 정보의 것을 그대로 사용")
+- 수집 방식은 API 접근이 가능하면 우선 활용하되, 특정 방식에 얽매이지 않고 필요하면 다른 수단(스크래핑 등)도 포함해 폭넓게 자료를 모은다. (사용자 확인: "api 접근이 되면 빠르게 진행되니 더 좋겠지. 가리지 않고 긁어모으고싶어")
+- 이후 확장을 고려해, 문제를 입력하면 라벨을 출력하는 분류 기능을 나중에 추가할 수 있도록 라벨 집합을 설계한다 — 단, 이 분류 기능 자체는 이번 범위가 아니다(아래 Non-Goals 참조).
 
 ## Non-Goals
 
-- [NEEDS CLARIFICATION: Building a full learning curriculum (concept explanations, videos, guided problem progression) — this is Codetree/Programmers-Kit territory and was not requested; tentatively out of scope unless the user says otherwise.]
-- Verbatim redistribution/hosting of full problem statements from source platforms — research flagged this as the highest legal-risk activity (copyright / 부정경쟁방지법 exposure); labeling/metadata with links back to the source is the safer boundary. [source: research.md "Data & Constraints", "Evidence Against the Idea"]
-- Novel ML research into automatic tag classification as an end in itself — existing academic work already explores this (~78% accuracy ceiling); if automation is used, it is a means to labeling, not the deliverable. [source: research.md "Prior Art" — arXiv:2308.01863]
+- 개별 문제 하나하나를 검토해 라벨을 수동/자동으로 "도출"하는 문제별 라벨링 작업 — 목적은 라벨 집합 자체이며, 라벨이 붙은 문제 데이터셋 구축이 아니다. (사용자 확인: "문제를 '보고' 그걸로 label을 '도출'하려는게 아니야")
+- "문제 입력 → 라벨 출력" 분류기(classifier) 기능 구현 — 사용자가 명시적으로 "나중에" 원한다고 밝힌 후속 확장이며, 이번 범위에서 제외한다.
+- 공개 배포, 공유, 상업적 이용, 타 사용자 대상 서비스화 — 순수 개인 학습용이다.
+- 문제 원문(지문)의 대량 복제·재배포 — 목표가 라벨 집합 자체로 좁혀지면서 문제 원문을 보관할 필요성도 낮아졌다; 필요한 경우도 출처 링크로 대체한다. [source: research.md "Data & Constraints", "Evidence Against the Idea"]
 
 ## Success Metrics
 
-- [NEEDS CLARIFICATION: Target coverage — number/percentage of problems labeled, and across how many sources — no target defined yet (baseline: 0 problems labeled under a unified scheme today).]
-- Cross-source consistency: a problem sourced from any covered platform can be mapped into the *same* shared taxonomy (baseline: 0 today — every platform's tags are separate and incompatible per research.md).
-- [NEEDS CLARIFICATION: Label accuracy/quality bar — e.g. agreement rate against expert/community review — not yet defined; matters especially if any automated labeling is used, given the ~78% ceiling observed in academic work.]
-- [NEEDS CLARIFICATION: Adoption/usage signal, if the output is meant for others (public dataset/service) rather than personal use — no baseline exists since scope/audience is undefined.]
+- 라벨 집합의 포괄성: 조사 대상 공신력 있는 출처(들)의 태그/유형 체계가 라벨 집합에 빠짐없이 반영되는가 (baseline: 0 — 현재 통합된 라벨 집합이 존재하지 않음).
+- [NEEDS CLARIFICATION: "가장 공신력 있는" 출처를 단수로 선정해 그대로 채택할 것인지, 복수 출처의 체계를 병합할 것인지에 따라 "빠짐없이 반영"의 기준 자체가 달라짐 — 아직 미확정.]
+- 실사용 가능성(정성적): 사용자 본인이 이 라벨 집합만으로 스스로 학습 계획을 세울 수 있는가.
+- [NEEDS CLARIFICATION: 라벨 집합의 "완성"을 무엇으로 판단할지 — 예: 특정 출처의 태그를 100% 흡수하면 완료로 보는지, 지속적으로 갱신되는 것을 전제로 하는지.]
 
 ## Cost of Inaction
 
-If nothing is built, job seekers continue what they already do today: manually cross-reference several free, official, per-platform taxonomies (solved.ac tags, 프로그래머스 고득점 Kit, LeetCode topics, Codeforces tags) to piece together their own mental model of problem types — or pay for a commercial product (Codetree, AlgoExpert) that has already unified this for them. This is inefficient and duplicative but not blocking: credible alternatives already exist on both the free and paid ends of the spectrum, so inaction preserves the status quo rather than leaving a hard gap. [source: research.md "Market & Context", "Evidence Against the Idea"]
+아무것도 만들지 않으면, 사용자는 지금처럼 solved.ac 태그, 프로그래머스 고득점 Kit, LeetCode 토픽, Codeforces 태그 등 여러 출처의 서로 다른 분류를 계속 수동으로 대조해야 한다. 무료(각 사이트 자체 태그)·유료(코드트리, AlgoExpert 등) 대안은 이미 존재하지만, "가장 공신력 있는 체계를 그대로 취합한 하나의 포괄적 라벨 집합" 형태의 결과물은 리서치에서도 확인되지 않았다 — 이는 이번 재정의로 명확해진, 실제로 채워지지 않은 구체적 공백이다. 다만 이는 사용자 개인의 불편에 국한되며(개인 학습용), 시급성이 높은 문제는 아니다. [source: research.md "Market & Context", "Evidence Against the Idea"]
 
 ## Open Questions
 
-- [NEEDS CLARIFICATION: Which sources are in scope (BOJ/solved.ac, 프로그래머스, LeetCode, Codeforces, others)? Carried from intake.md and research.md — unresolved.]
-- [NEEDS CLARIFICATION: What are the taxonomy's dimensions/axes (자료구조, 기법, 난이도, 기업, 문제 출처 등) and how are conflicts between sources' existing tags reconciled?]
-- [NEEDS CLARIFICATION: What is the end use of the labeled output — personal study tool, open dataset, public service, or ML training data? This changes both the success metrics and the legal-risk tolerance.]
-- [NEEDS CLARIFICATION: What differentiates this effort from `tony9402/baekjoon`, solved.ac's tags, 프로그래머스's 고득점 Kit, and commercial products (Codetree, AlgoExpert)? Without an answer, the project risks duplicating existing, already-credible work.]
-- [NEEDS CLARIFICATION: Will data be acquired via official/semi-official APIs (Codeforces API, solved.ac's unofficial API) or via direct scraping of HTML/problem text? This materially changes legal exposure — see research.md "Data & Constraints."]
-- [NEEDS CLARIFICATION: acmicpc.net's and programmers.co.kr's actual Terms of Service text (crawling/redistribution clauses) remain unverified — needs direct human review before any data-collection design is finalized.]
-- [NEEDS CLARIFICATION: Manual curation (as in existing prior art) vs. automated ML-based labeling at "전부" (comprehensive) scale — the two paths carry very different feasibility, cost, and quality trade-offs.]
-- [NEEDS CLARIFICATION: Is this a solo effort or for a team/organization? Any target scale (problem count) or timeline?]
+- [NEEDS CLARIFICATION: "가장 공신력 있는 출처"를 어떻게 선정/병합할 것인가 — 예: solved.ac의 태그 체계 하나를 기본으로 채택할지, 여러 출처(solved.ac, LeetCode, Codeforces, 프로그래머스 등)의 체계를 합쳐서 사용할지?]
+- [NEEDS CLARIFICATION: "가리지 않고 긁어모으고 싶다"는 답변은 API뿐 아니라 스크래핑도 포함한다는 뜻으로 해석됨 — 이는 research.md에서 확인된, 아직 검증되지 않은 백준/프로그래머스 이용약관상 크롤링 리스크를 다시 불러온다. 개인 비공개 학습용이라 리스크는 낮아지지만 완전히 사라지지는 않으므로, 실제 이용약관 원문 검토가 여전히 필요하다.]
+- [NEEDS CLARIFICATION: 라벨 집합의 구조/형식 — solved.ac처럼 상위/하위 태그의 계층 구조를 유지할 것인가, 아니면 평평한(flat) 목록인가?]
+- [NEEDS CLARIFICATION: 향후 추가할 "문제 입력 → 라벨 출력" 분류 기능을 염두에 두면, 지금 라벨 집합을 만들 때 이 확장에 적합한 형태(예: 각 라벨의 정의, 예시, 판별 기준 등)로 미리 설계해 둘 필요가 있는지?]

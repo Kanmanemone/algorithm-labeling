@@ -1,45 +1,52 @@
-# Concept: 알고리즘 문제 라벨링(유형화) 시스템
+# Concept: 알고리즘 문제 라벨링(유형화) 시스템 — 라벨 집합(taxonomy) 구축
 
 - **Slug**: algorithm-problem-labeling
 - **Created**: 2026-07-21
-- **Recommended option**: Option B — Canonical Cross-Platform Mapping Layer (bounded, manually curated)
+- **Recommended option**: Option B — 다중 출처 병합 캐노니컬 라벨 집합 (얕은 2단계 계층 + 정의/예시/판별기준)
+
+## 이번 재조정 반영 사항
+
+- "가장 공신력 있는 출처"는 **단일 출처가 아니라 여러 출처를 병합**해서 사용한다. (사용자 확인)
+- 이전에 우려했던 "크롤링"은 문제풀이 사이트(BOJ/프로그래머스 등)에 대한 프로그램적 스크래핑이 아니라, **웹 검색으로 공개된 문서(공식 도움말, 커뮤니티 문서, 블로그 등)를 조사해 각 출처의 태그 체계를 파악하는 것**을 의미했다. 따라서 이전 problem.md/decision.md에서 반복적으로 제기됐던 이용약관(ToS)·크롤링 법적 리스크는 이 개념(concept)에서는 사실상 해소된다 — 문제풀이 사이트에 직접 접속해 대량 수집하지 않는다. (사용자 확인)
+- 라벨 집합의 구조는 **상위/하위 태그의 계층 구조를 쓰되, depth는 얕게(2단계 수준)** 유지한다. (사용자 확인)
+- 향후 "문제 입력 → 라벨 출력" 분류 기능 확장을 염두에 두고, **각 라벨에 정의·예시·판별 기준을 지금 단계에서 함께 설계**한다. (사용자 확인: "만들어서 손해볼건없잖아. 지금 해두자")
 
 ## Options
 
-### Option A — Adopt existing tools, build nothing
-- **Sketch**: Don't build anything new. Point job-seekers at what already exists per-source: solved.ac tags + 난이도 tiers for BOJ, 프로그래머스's official 고득점 Kit for Programmers, LeetCode's own topic tags (optionally augmented by community repos like `berknology/leetcode-classifier`), and Codeforces' tags + rating API. For a unified, curated cross-platform experience, recommend a paid product (Codetree/AlgoExpert) instead.
-- **Appetite**: small (a day or two to compile a pointer list).
-- **Trade-offs**: Wins: zero build cost, zero legal exposure, immediately available, backed by sources research already confirmed are credible. Sacrifices: does not solve the actual confirmed gap — no shared taxonomy across sources, so the user is back to manual reconciliation (the status quo, per problem.md "Cost of Inaction") or has to pay for someone else's synthesis.
-- **Rabbit holes**: None — this is intentionally inert. The risk is *appearing* to solve the problem while leaving the core pain (fragmented, incompatible taxonomies) untouched.
+### Option A — 단일 출처 그대로 채택 (최소 비교안)
+- **Sketch**: solved.ac의 기존 태그 체계(이미 계층 구조를 갖추고 있고 커뮤니티 검증을 거침)를 사실상 그대로 라벨 집합으로 채택하고, solved.ac 자체 도움말에 없는 정의·예시·판별기준만 보완한다.
+- **Appetite**: small.
+- **Trade-offs**: 가장 빠르고 단순하지만, 사용자가 명시적으로 원한 "여러 출처 병합"을 충족하지 못한다. solved.ac는 BOJ 문제 위주라 LeetCode/Codeforces 계열에서 흔한 유형(예: Trie, Union-Find 세부 응용, 인터뷰 특화 패턴 등)이 상대적으로 약하게 반영될 수 있다.
+- **Rabbit holes**: 별로 없음 — 오히려 리스크는 "충분히 포괄적이지 않다"는 점 자체.
 
-### Option B — Canonical Cross-Platform Mapping Layer (bounded, manually curated)
-- **Sketch**: Define one small canonical taxonomy (e.g., ~15–25 types: DP, graph, greedy, DFS/BFS, two-pointer, binary search, implementation, etc. — refined during specification) and manually map a bounded, curated problem set from each in-scope source into it, pulling existing tags via official/semi-official APIs (Codeforces API, solved.ac's community API) rather than scraping problem text or claiming exhaustive "전부" coverage on day one. Output is metadata + links back to the source (no redistribution of problem statements), modeled on how `tony9402/baekjoon` and the LeetCode classifier repos already operate, but explicitly spanning multiple platforms under one shared schema — the piece research confirmed doesn't exist anywhere yet.
-- **Appetite**: small–medium (a few weeks for a first useful slice; taxonomy + initial curated set for 1–2 sources before expanding).
-- **Trade-offs**: Wins: directly targets the one confirmed differentiator (cross-platform unification) instead of re-doing what solved.ac/Programmers/LeetCode/Codeforces already do; avoids the highest legal-risk activity (bulk scraping/redistributing problem text) by using APIs and linking out; sidesteps the ~78% ML-accuracy ceiling by curating manually, like the credible prior art already does. Sacrifices: "전부" (comprehensive) coverage is not achieved immediately — coverage grows only as fast as curation capacity; still depends on solved.ac's *unofficial*, explicitly-unstable API for BOJ tag data.
-- **Rabbit holes**: Taxonomy bikeshedding (endless refinement of category boundaries before shipping anything); scope creep from "bounded curated set" back toward "all problems on all platforms"; ambiguous problems that plausibly fit multiple canonical categories; source-platform tag schemas changing/APIs disappearing out from under the mapping.
+### Option B — 다중 출처 병합 캐노니컬 라벨 집합 (추천)
+- **Sketch**: solved.ac, LeetCode, Codeforces, 프로그래머스 등 공신력 있는 출처들의 **공개 문서(공식 도움말/문서, 신뢰할 만한 커뮤니티 문서)를 웹 검색으로 조사**해 각 출처의 태그를 목록화하고, 유사·중복 개념을 병합해 하나의 통합 라벨 집합으로 정리한다. 구조는 상위 카테고리(예: 자료구조, 그래프, 탐색, DP 등) + 하위 태그의 2단계 계층으로 제한한다. 각 하위 태그(라벨)에는 이름, 정의, 대표 예시(문제 원문 복제 없이 문제 이름·출처·링크로만 참조), 비슷한 라벨과 구분되는 판별 기준을 함께 기록한다. 결과물은 코드가 아니라 구조화된 문서/데이터(예: Markdown 또는 YAML/JSON)이며, 조사·정리 작업이 핵심이다.
+- **Appetite**: small–medium (며칠~약 1~2주 — 출처 조사, 태그 병합, 라벨별 정의/예시/판별기준 작성까지 포함).
+- **Trade-offs**: 여러 출처의 용어 차이를 하나로 병합하는 과정에서 주관적 판단이 불가피하고, 라벨 수만큼 정의·예시·판별기준 작성이 반복되므로 라벨 수가 늘어날수록 작업량이 비례해서 늘어난다. 반대로, problem.md의 목표(포괄적이고 공신력 있는 통합 라벨 집합)와 이번 재조정 사항(다중 출처 병합, 얕은 계층, 정의/예시/기준 포함)을 가장 직접적으로 충족한다.
+- **Rabbit holes**: (1) 계층 깊이가 "얕게"라는 지침을 어기고 은근슬쩍 3단계 이상으로 늘어나는 것, (2) 서로 다른 출처의 태그가 "같은 개념인가 다른 개념인가"를 판단하는 데 과도한 시간을 쓰는 것, (3) 판별 기준 작성이 라벨마다 에세이 수준으로 길어지는 것 — 항목당 분량 상한을 두지 않으면 전체 작업이 무한정 늘어날 수 있음.
 
-### Option C — Automated, comprehensive cross-platform labeling pipeline
-- **Sketch**: Build an ingestion + classification pipeline aiming for the literal "전부" (all problems, all sources) framing in the original idea — pulling problems wherever possible (APIs where they exist, scraping where they don't, e.g. BOJ has no official API) and using ML-based tag prediction (per research.md's academic prior art) to auto-assign canonical labels at scale, with human review as a secondary QA pass.
-- **Appetite**: large (months) — ingestion infra per source, a maintained classifier, and an ongoing QA/relabeling loop.
-- **Trade-offs**: Wins: only option that actually targets the stated "전부" scale. Sacrifices: inherits every risk research flagged as serious — scraping legal exposure on sources without APIs, an ML accuracy ceiling (~78% in published work) that necessitates heavy human QA anyway, and high ongoing maintenance as source sites change. Largely duplicates unresolved research problems rather than known-solvable engineering.
-- **Rabbit holes**: Scraper/ToS legal risk (flagged unresolved in problem.md); classifier accuracy/QA loop becoming an open-ended research project; per-platform ingestion breakage as sites change; taxonomy design still has to happen first, so this doesn't avoid Option B's core challenge — it just adds automation and scale risk on top of it.
+### Option C — Option B + 라벨별 소규모 예시 문제 뱅크(seed set)
+- **Sketch**: Option B에 더해 각 라벨마다 실제 참고용 문제를 2~3개씩 선별해 링크로 정리하고, 향후 "문제 입력 → 라벨 출력" 분류기 실험에 바로 쓸 수 있는 초기 학습/검증용 참고 자료까지 함께 준비한다.
+- **Appetite**: medium.
+- **Trade-offs**: 향후 분류기 확장(problem.md에서 명시적으로 "나중"으로 미룬 기능)에는 더 유리하지만, 라벨 수 × 예시 수만큼 조사량이 커진다. 무엇보다 아직 라벨 집합 자체가 처음 만들어지는 단계라 첫 실사용 후 태그 체계가 바뀔 가능성이 높고, 그 경우 애써 고른 예시들이 재작업될 위험(taxonomy churn)이 있다.
+- **Rabbit holes**: 아직 확정되지 않은 분류기 설계(입력 형식, 라벨 단위 등)를 예측해서 예시를 고르다가 잘못된 가정에 맞춰 작업하는 것; 라벨 집합이 안정화되기 전에 예시 뱅크부터 만들어 이중 작업이 되는 것.
 
 ## Recommendation
 
-**Option B.** Research and the problem definition converge on one specific, confirmed gap: a shared taxonomy spanning multiple authoritative sources doesn't exist anywhere — not in solved.ac, not in 프로그래머스's Kit, not in LeetCode's tags, not in Codeforces' tags, and not fully in any single prior-art repo (`tony9402/baekjoon` and the LeetCode classifiers are each single-platform). Option B is the smallest concept that targets exactly that gap rather than re-implementing work that already exists and is already credible (Option A) or chasing a "comprehensive + automated" scope whose two hardest parts (legal risk on non-API sources, ML labeling accuracy) are both open problems research couldn't resolve (Option C). Building the canonical taxonomy and a bounded curated mapping first also produces the artifact needed to *evaluate* whether automation (Option C) is worth pursuing later — it's a natural stepping stone, not a dead end.
+**Option B.** problem.md의 목표(가장 공신력 있는 출처들을 병합한, 존재하는 모든 문제에 적용 가능한 포괄적 라벨 집합)와 이번 재조정에서 확정된 조건(다중 출처 병합, 얕은 2단계 계층, 정의·예시·판별기준을 지금 포함)을 가장 직접적으로 충족하는 옵션이다. Option A는 다중 출처 병합 요건을 충족하지 못하고, Option C는 아직 만들어지지도 않은 라벨 집합 위에 예시 뱅크부터 쌓는 것이라 순서상 이르다 — 라벨 집합이 첫 실사용을 거쳐 안정화된 뒤에 자연스러운 다음 단계로 남겨두는 것이 타당하다. 또한 데이터 수집이 프로그램적 스크래핑이 아니라 공개 문서 조사로 확인되었으므로, Option B는 별도의 수집 인프라 없이 조사·정리 작업만으로 수행 가능하다.
 
 ## Out of Scope (for the recommended option)
 
-- Full learning-curriculum content (concept explanations, videos, guided problem sequencing) — inherited from problem.md non-goals.
-- Verbatim redistribution/hosting of problem statements — link back to source instead.
-- Scraping sources that expose no official/semi-official API/tag data (e.g., BOJ has no official API of its own — only the unofficial solved.ac layer).
-- Automated ML-based tag prediction as the primary labeling method — may be revisited later once the taxonomy and a manually-labeled reference set exist.
-- Claiming exhaustive "all problems" coverage at launch — coverage is explicitly bounded and grows incrementally.
+- 개별 문제 하나하나에 라벨을 실제로 부착하는 작업 (problem.md 비목표 유지 — 목적은 라벨 집합 자체).
+- "문제 입력 → 라벨 출력" 분류기 구현 (problem.md 비목표 유지 — 사용자가 명시한 후속 확장).
+- 문제풀이 사이트(BOJ/프로그래머스/LeetCode/Codeforces 등)에 대한 프로그램적 크롤링/스크래핑 — 데이터 수집은 공개된 도움말·공식 문서·신뢰할 만한 커뮤니티 문서에 대한 조사로 한정한다.
+- 라벨별 다수의 예시 문제 뱅크 구축(Option C) — 라벨 집합이 안정화된 이후로 미룬다.
+- 공개 배포·공유, 상업적 이용, 타 사용자 대상 서비스화 (problem.md 비목표 유지 — 순수 개인 학습용).
+- 문제 원문(지문)의 복제·보관 — 예시는 이름/출처/링크로만 참조한다.
 
 ## Assumptions to Validate
 
-- [NEEDS CLARIFICATION: A canonical taxonomy of roughly 15–25 categories can absorb solved.ac/LeetCode/Codeforces/Programmers tags without unacceptable information loss — not yet tested against real per-source tag lists.]
-- solved.ac's API is unofficial and explicitly may be removed or changed without notice (per research.md) — the concept depends on it remaining usable long enough to bootstrap BOJ-side labels, or on a manual fallback being acceptable.
-- [NEEDS CLARIFICATION: The end use is a personal/small-scale study aid rather than a public product or dataset — this was never confirmed in problem.md and changes the appetite and legal bar significantly; Option B's "small–medium" sizing assumes the lower-stakes case.]
-- Manual, curation-first labeling (as in the credible prior art) is an acceptable trade-off to the user versus expecting full automation from day one.
-- [NEEDS CLARIFICATION: Which sources belong in the first bounded slice — problem.md left source scope unresolved, and Option B's appetite depends on starting with 1–2 sources, not all four at once.]
+- [NEEDS CLARIFICATION: 상위/하위 2단계 계층만으로 여러 출처(solved.ac, LeetCode, Codeforces, 프로그래머스 등)의 태그 다양성을 큰 정보 손실 없이 담을 수 있는지 — 실제 태그 목록을 모아 병합해보기 전까지는 검증되지 않음.]
+- 각 출처의 태그 체계에 대해 충분히 신뢰할 만한 공개 문서(공식 도움말, 대표 커뮤니티 문서 등)를 웹 검색으로 확보할 수 있다는 전제 — research.md에서 solved.ac 도움말, LeetCode 공식 토픽, Codeforces 공식 태그, 프로그래머스 고득점 Kit 등 관련 문서의 존재는 이미 확인됨.
+- [NEEDS CLARIFICATION: 최종 라벨(하위 태그) 개수가 대략 어느 정도 규모(예: 20~40개 수준)일지에 따라 "정의·예시·판별기준을 전부 작성"하는 작업량이 감당 가능한 범위인지가 달라짐 — 아직 실제 라벨 개수는 미정.]
+- 지금 작성해 두는 정의·예시·판별기준 필드가 향후 분류기 설계에 실제로 재사용 가능한 형태일 것이라는 가정 — 분류기 자체는 아직 설계 전이므로 확정된 요구사항은 아님.
