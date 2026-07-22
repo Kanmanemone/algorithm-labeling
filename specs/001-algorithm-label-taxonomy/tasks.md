@@ -29,7 +29,7 @@ description: "Task list template for feature implementation"
 
 **Purpose**: 최종 문서 뼈대 준비
 
-- [ ] T001 `taxonomy/` 디렉터리와 `taxonomy/taxonomy.md`를 생성하고, 제목·카테고리 섹션이 들어갈 자리·`## 출처 태그 매핑` 헤더만 있는 빈 뼈대를 작성한다 (plan.md Project Structure)
+- [X] T001 `taxonomy/` 디렉터리와 `taxonomy/taxonomy.md`를 생성하고, 제목·카테고리 섹션이 들어갈 자리·`## 출처 태그 매핑` 헤더만 있는 빈 뼈대를 작성한다 (plan.md Project Structure)
 
 ---
 
@@ -39,10 +39,10 @@ description: "Task list template for feature implementation"
 
 **⚠️ CRITICAL**: 이 Phase가 끝나기 전에는 어떤 User Story 작업도 시작할 수 없다.
 
-- [ ] T002 [P] solved.ac 태그 체계를 `help.solved.ac`(태그/난이도 도움말)와 `solved.ac/problems/tags`(전체 태그 목록)에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/solved-ac-tags.md`에 기록한다 (research.md Decision 3, FR-001)
-- [ ] T003 [P] LeetCode 태그 체계를 `leetcode.com/problemset`의 토픽 필터 UI에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/leetcode-tags.md`에 기록한다 (research.md Decision 3, FR-001)
-- [ ] T004 [P] Codeforces 태그 체계를 `codeforces.com/problemset`의 태그 필터 UI에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/codeforces-tags.md`에 기록한다 (research.md Decision 3, FR-001)
-- [ ] T005 [P] 프로그래머스 태그 체계를 "코딩테스트 고득점 Kit" 페이지에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/programmers-tags.md`에 기록한다 (research.md Decision 3, FR-001)
+- [X] T002 [P] solved.ac 태그 체계를 `help.solved.ac`(태그/난이도 도움말)와 `solved.ac/problems/tags`(전체 태그 목록)에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/solved-ac-tags.md`에 기록한다 (research.md Decision 3, FR-001)
+- [X] T003 [P] LeetCode 태그 체계를 `leetcode.com/problemset`의 토픽 필터 UI에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/leetcode-tags.md`에 기록한다 (research.md Decision 3, FR-001)
+- [X] T004 [P] Codeforces 태그 체계를 `codeforces.com/problemset`의 태그 필터 UI에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/codeforces-tags.md`에 기록한다 (research.md Decision 3, FR-001)
+- [X] T005 [P] 프로그래머스 태그 체계를 "코딩테스트 고득점 Kit" 페이지에서 조사해 원시 태그 목록을 `specs/001-algorithm-label-taxonomy/sources/programmers-tags.md`에 기록한다 (research.md Decision 3, FR-001)
 
 **Checkpoint**: 네 출처의 원시 태그 목록이 모두 확보됨 — 이제 병합(User Story 작업)을 시작할 수 있다.
 
@@ -56,10 +56,10 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 1
 
-- [ ] T006 [US1] `specs/001-algorithm-label-taxonomy/sources/solved-ac-tags.md`·`leetcode-tags.md`·`codeforces-tags.md`·`programmers-tags.md`의 원시 태그를 서로 비교해 병합 여부를 판단한다 — 개념이 사실상 동일하면 병합, 범위/난이도가 달라 구분이 필요하면 별개 유지, 판단이 애매하면 기본적으로 별개 유지(보수적 분리)한다(FR-003, spec.md Clarifications). 판단 결과와 근거를 `specs/001-algorithm-label-taxonomy/sources/merge-notes.md`에 기록한다 (depends on: T002, T003, T004, T005)
-- [ ] T007 [US1] T006의 병합 결과로 상위 카테고리를 확정하고, 각 라벨을 정확히 하나의 상위 카테고리에 배정한다(단일 부모, 다중 소속 불가 — FR-002). `taxonomy/taxonomy.md`에 `## <카테고리명>` / `### <라벨명>` 헤딩 구조로 뼈대를 작성한다 (depends on: T006)
-- [ ] T008 [US1] `taxonomy/taxonomy.md`의 각 라벨 섹션에 이름·정의·대표 예시(문제 이름·출처·링크만, 원문 비복제, 최소 1개 — FR-005)·판별기준(유사 라벨과 구분되는 기준, 병합이 애매했던 라벨은 "명확히 구분하기 어려움"을 포함 — FR-003)을 작성한다 (depends on: T007)
-- [ ] T009 [US1] `taxonomy/taxonomy.md`를 quickstart.md의 SC-002(모든 라벨이 4개 필드를 빠짐없이 갖췄는지)·SC-003(카테고리→라벨 2단계를 초과하는 헤딩이 없는지) 절차로 자체 점검하고, 발견된 누락을 수정한다 (depends on: T008)
+- [X] T006 [US1] `specs/001-algorithm-label-taxonomy/sources/solved-ac-tags.md`·`leetcode-tags.md`·`codeforces-tags.md`·`programmers-tags.md`의 원시 태그를 서로 비교해 병합 여부를 판단한다 — 개념이 사실상 동일하면 병합, 범위/난이도가 달라 구분이 필요하면 별개 유지, 판단이 애매하면 기본적으로 별개 유지(보수적 분리)한다(FR-003, spec.md Clarifications). 판단 결과와 근거를 `specs/001-algorithm-label-taxonomy/sources/merge-notes.md`에 기록한다 (depends on: T002, T003, T004, T005)
+- [X] T007 [US1] T006의 병합 결과로 상위 카테고리를 확정하고, 각 라벨을 정확히 하나의 상위 카테고리에 배정한다(단일 부모, 다중 소속 불가 — FR-002). `taxonomy/taxonomy.md`에 `## <카테고리명>` / `### <라벨명>` 헤딩 구조로 뼈대를 작성한다 (depends on: T006)
+- [X] T008 [US1] `taxonomy/taxonomy.md`의 각 라벨 섹션에 이름·정의·대표 예시(문제 이름·출처·링크만, 원문 비복제, 최소 1개 — FR-005)·판별기준(유사 라벨과 구분되는 기준, 병합이 애매했던 라벨은 "명확히 구분하기 어려움"을 포함 — FR-003)을 작성한다 (depends on: T007)
+- [X] T009 [US1] `taxonomy/taxonomy.md`를 quickstart.md의 SC-002(모든 라벨이 4개 필드를 빠짐없이 갖췄는지)·SC-003(카테고리→라벨 2단계를 초과하는 헤딩이 없는지) 절차로 자체 점검하고, 발견된 누락을 수정한다 (depends on: T008)
 
 **Checkpoint**: User Story 1은 이 시점에서 완전히 동작하며 독립적으로 검증 가능하다(MVP).
 
@@ -73,9 +73,9 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 2
 
-- [ ] T010 [US2] `specs/001-algorithm-label-taxonomy/sources/merge-notes.md`에서 "범위/난이도 차이로 분리" 또는 "애매해서 보수적으로 분리"로 기록된 유사 라벨 쌍을 전수 식별해 목록화한다 (depends on: T006)
-- [ ] T011 [US2] T010에서 식별한 유사 라벨 쌍마다 `taxonomy/taxonomy.md`의 판별기준을 재검토하고, 두 라벨을 실제로 구분하는 데 쓸 수 있는 수준으로 구체화한다 (depends on: T008, T010)
-- [ ] T012 [US2] 보강된 판별기준만 읽고 각 유사 라벨 쌍을 구분할 수 있는지 자체 검증한다(spec.md User Story 2 Acceptance Scenario) — 구분이 안 되는 쌍이 있으면 T011로 돌아가 보강한다 (depends on: T011)
+- [X] T010 [US2] `specs/001-algorithm-label-taxonomy/sources/merge-notes.md`에서 "범위/난이도 차이로 분리" 또는 "애매해서 보수적으로 분리"로 기록된 유사 라벨 쌍을 전수 식별해 목록화한다 (depends on: T006)
+- [X] T011 [US2] T010에서 식별한 유사 라벨 쌍마다 `taxonomy/taxonomy.md`의 판별기준을 재검토하고, 두 라벨을 실제로 구분하는 데 쓸 수 있는 수준으로 구체화한다 (depends on: T008, T010)
+- [X] T012 [US2] 보강된 판별기준만 읽고 각 유사 라벨 쌍을 구분할 수 있는지 자체 검증한다(spec.md User Story 2 Acceptance Scenario) — 구분이 안 되는 쌍이 있으면 T011로 돌아가 보강한다 (depends on: T011)
 
 **Checkpoint**: User Story 1과 2가 함께 독립적으로 동작한다.
 
@@ -89,8 +89,8 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 3
 
-- [ ] T013 [US3] T006의 병합 판단 결과를 바탕으로, 네 출처 각각의 원본 태그마다 대응하는 병합 라벨(들)을 정리해 `taxonomy/taxonomy.md`의 `## 출처 태그 매핑` 섹션에 표로 작성한다. 새 카테고리 신설이나 애매한 병합 판정처럼 근거가 필요한 경우 note 칸에 남긴다(FR-004) (depends on: T006, T007)
-- [ ] T014 [US3] 네 출처 각각에 대해, 원시 태그 목록(T002~T005)의 태그가 매핑 표에 100% 존재하는지 대조한다(SC-001) — 누락된 태그가 있으면 T013으로 돌아가 보완한다 (depends on: T013)
+- [X] T013 [US3] T006의 병합 판단 결과를 바탕으로, 네 출처 각각의 원본 태그마다 대응하는 병합 라벨(들)을 정리해 `taxonomy/taxonomy.md`의 `## 출처 태그 매핑` 섹션에 표로 작성한다. 새 카테고리 신설이나 애매한 병합 판정처럼 근거가 필요한 경우 note 칸에 남긴다(FR-004) (depends on: T006, T007)
+- [X] T014 [US3] 네 출처 각각에 대해, 원시 태그 목록(T002~T005)의 태그가 매핑 표에 100% 존재하는지 대조한다(SC-001) — 누락된 태그가 있으면 T013으로 돌아가 보완한다 (depends on: T013)
 
 **Checkpoint**: 세 User Story가 모두 독립적으로 기능한다.
 
@@ -100,8 +100,8 @@ description: "Task list template for feature implementation"
 
 **Purpose**: 전체 산출물에 대한 최종 점검
 
-- [ ] T015 [P] `taxonomy/taxonomy.md`에 대해 quickstart.md의 SC-001~004 절차를 처음부터 끝까지 실행해 최종 점검한다 (depends on: T009, T012, T014)
-- [ ] T016 `taxonomy/taxonomy.md` 서두에 문서 성격 안내(사용자 본인의 개인 학습 용도, 조사 시점 기준 정적 스냅샷임 — FR-008, FR-009)를 추가한다 (depends on: T001)
+- [X] T015 [P] `taxonomy/taxonomy.md`에 대해 quickstart.md의 SC-001~004 절차를 처음부터 끝까지 실행해 최종 점검한다 (depends on: T009, T012, T014)
+- [X] T016 `taxonomy/taxonomy.md` 서두에 문서 성격 안내(사용자 본인의 개인 학습 용도, 조사 시점 기준 정적 스냅샷임 — FR-008, FR-009)를 추가한다 (depends on: T001)
 
 ---
 
