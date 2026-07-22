@@ -173,3 +173,14 @@ Task: "프로그래머스 태그 체계 조사 → specs/001-algorithm-label-tax
 - 이 기능에는 자동화 테스트가 없다 — 대신 각 스토리의 Independent Test와 quickstart.md 절차로 검증한다
 - `specs/001-algorithm-label-taxonomy/sources/*.md`는 병합 작업용 중간 산출물이며, 최종 산출물이 아니다(plan.md 참고)
 - 애매한 병합 판단은 항상 보수적 분리가 기본값이다(FR-003) — 병합할지 확신이 서지 않으면 분리하고 넘어간다
+
+---
+
+## Phase 7: Convergence
+
+- [X] T017 `taxonomy/taxonomy.md`의 61개 라벨 헤딩과 출처 태그 매핑 표의 라벨명을 "한글 (English)" 형식(예: "이분 탐색 (Binary Search)")으로 갱신 — 해당 라벨에 대응하는 solved.ac/LeetCode/Codeforces 원본 태그 중 가장 대표적인 영어 표현을 괄호 안에 병기 per FR-003 (partial)
+- [X] T018 `README.md`의 전체 라벨 목록(카테고리·라벨 링크 텍스트)을 `[**한글**&nbsp;&nbsp;&nbsp;&nbsp;*English*]` 형식(볼드체 한글 + 4칸 간격 + 괄호 없이 이탤릭체 영문)으로 갱신하고, 앵커 링크는 `taxonomy.md`의 실제 헤딩 슬러그와 다시 일치시킴(영문 병기로 헤딩 텍스트가 바뀌면 앵커도 바뀜) per FR-003 (partial)
+- [X] T019 "오프라인 쿼리" 라벨의 대표 예시(`taxonomy.md` 오프라인 쿼리 절)를 오프라인 쿼리 기법에 정확히 부합하는 검증된 문제(이름·출처·링크)로 교체 per FR-005 (partial)
+- [X] T020 "네트워크 유량" 라벨의 대표 예시를 구체적인 이름·출처·링크를 갖춘 검증된 문제로 교체 per FR-005 (partial)
+- [X] T021 "강한 연결 요소" 라벨의 대표 예시를 SCC 개념에 정확히 부합하는 검증된 문제로 교체 per FR-005 (partial)
+- [X] T022 "다각형과 선분 기하" 라벨의 대표 예시를 신발끈 공식/선분 교차 판정에 정확히 부합하는 검증된 문제로 교체 per FR-005 (partial)
