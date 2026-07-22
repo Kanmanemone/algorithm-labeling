@@ -188,7 +188,7 @@
 
 **정의**: 배열 구간에 대한 합·최솟값 등의 쿼리와 값 갱신을 모두 로그 시간에 처리하는 트리 기반 자료구조. 느리게 갱신되는(lazy propagation) 세그먼트 트리도 포함.
 
-**대표 예시**: "구간 합 구하기" — 백준(BOJ) — https://www.acmicpc.net/problem/2042
+**대표 예시**: "Count of Smaller Numbers After Self" — LeetCode — https://leetcode.com/problems/count-of-smaller-numbers-after-self/ (구간 카운트 쿼리를 세그먼트 트리/BIT로 처리하는 대표 문제)
 
 **판별기준**: 값 갱신 없이 구간 합만 필요하면 **누적합과 좌표 압축**으로 충분할 수 있다. 갱신과 구간 쿼리가 함께 빈번히 필요하면 이 라벨이나 **인덱스 트리(BIT)**로 넘어간다.
 
@@ -208,7 +208,7 @@
 
 **정의**: 원소들을 여러 그룹(집합)으로 묶고, 두 원소가 같은 그룹인지 빠르게 판별하거나 그룹을 합치는 자료구조(Disjoint Set Union).
 
-**대표 예시**: "집합의 표현" — 백준(BOJ) — https://www.acmicpc.net/problem/1717
+**대표 예시**: "Number of Provinces" — LeetCode — https://leetcode.com/problems/number-of-provinces/ (그룹을 합쳐가며 연결 요소 개수를 구하는 대표적인 유니온 파인드 입문 문제)
 
 **판별기준**: 그래프의 연결 여부만 판별하면 **DFS**/**BFS**로도 풀 수 있지만, "그룹을 계속 합쳐 나가며 반복적으로 질의"해야 하면 이 라벨이 더 적합하다.
 
@@ -250,7 +250,7 @@
 
 **정의**: 그래프나 격자에서 시작점으로부터 가까운 노드부터 순서대로(레벨 단위로) 탐색하는 너비 우선 탐색. 격자(grid) 위에서의 탐색도 이 라벨과 **DFS**에 함께 매핑한다(격자는 그래프의 특수한 표현일 뿐).
 
-**대표 예시**: "미로 탐색" — 백준(BOJ) — https://www.acmicpc.net/problem/2178
+**대표 예시**: "Rotting Oranges" — LeetCode — https://leetcode.com/problems/rotting-oranges/ (격자에서 다중 시작점 BFS로 최단 시간을 구하는 대표 문제)
 
 **판별기준**: 가중치 없는 그래프에서 "최단 거리(간선 수 기준)"를 구해야 하면 BFS, 단순히 도달 가능한 모든 노드를 훑기만 하면 **DFS**를 써도 무방하다 — 두 태그가 함께 붙는 문제도 많다.
 
@@ -270,7 +270,7 @@
 
 **정의**: 가중치가 있는 그래프에서 한 지점에서 다른 지점까지 최소 비용 경로를 구하는 유형(다익스트라, 벨만-포드, 플로이드-워셜 포함).
 
-**대표 예시**: "최단경로" — 백준(BOJ) — https://www.acmicpc.net/problem/1753
+**대표 예시**: "Network Delay Time" — LeetCode — https://leetcode.com/problems/network-delay-time/ (다익스트라 알고리즘으로 최단 경로를 구하는 대표 입문 문제)
 
 **판별기준**: 음수 간선이 없으면 다익스트라, 음수 간선이 있으면 벨만-포드, 모든 쌍의 최단 경로가 필요하면 플로이드-워셜 — 이 라벨 안에서 구체적 알고리즘을 문제 조건에 맞춰 선택한다.
 
@@ -280,7 +280,7 @@
 
 **정의**: 그래프의 모든 정점을 최소 비용으로 연결하는 부분 그래프(트리)를 찾는 유형(크루스칼, 프림).
 
-**대표 예시**: "최소 스패닝 트리" — 백준(BOJ) — https://www.acmicpc.net/problem/1197
+**대표 예시**: "Min Cost to Connect All Points" — LeetCode — https://leetcode.com/problems/min-cost-to-connect-all-points/ (크루스칼/프림 알고리즘으로 최소 스패닝 트리를 구하는 대표 문제)
 
 **판별기준**: "모든 정점을 연결하는 최소 비용"이 목표면 이 라벨, "두 정점 사이의 최소 비용"이 목표면 **최단 경로**.
 
@@ -310,7 +310,7 @@
 
 **정의**: 그래프의 각 간선에 용량이 있을 때, 출발점에서 도착점까지 흘려보낼 수 있는 최대 유량을 구하는 유형.
 
-**대표 예시**: "최대 유량" — 백준(BOJ) — https://www.acmicpc.net/problem/6086 (포드-풀커슨/에드몬드-카프로 푸는 대표적인 최대 유량 입문 문제 — 문제 번호는 방문해 재확인 권장)
+**대표 예시**: "Li Hua and Maze" — Codeforces — https://codeforces.com/problemset/problem/1797/A (Codeforces 공식 API의 `flows` 태그로 분류된 문제 — 그래프를 유량 네트워크로 모델링해 접근할 수 있음. LeetCode에는 순수 최대 유량 전용 문제가 드물어 Codeforces에서 선정)
 
 **판별기준**: 단순 최단 경로가 아니라 "흐를 수 있는 총량"이 목표라는 점에서 **최단 경로**와 구분된다.
 
@@ -320,7 +320,7 @@
 
 **정의**: 방향 그래프에서 서로 도달 가능한(양방향으로 갈 수 있는) 정점들의 집합(SCC)을 찾는 유형.
 
-**대표 예시**: "Strongly Connected Component" — 백준(BOJ) — https://www.acmicpc.net/problem/2150 (타잔/코사라주 알고리즘으로 SCC를 직접 구하는 대표 입문 문제 — 문제 번호는 방문해 재확인 권장)
+**대표 예시**: "Reachability from the Capital" — Codeforces — https://codeforces.com/problemset/problem/999/E (SCC로 그래프를 압축(condensation)한 뒤 진입 차수가 0인 성분의 개수를 세는 대표적인 SCC 활용 문제)
 
 **판별기준**: 무방향 그래프의 단순 연결 요소는 **유니온 파인드**/**DFS**로 충분하지만, 방향 그래프에서 "서로 도달 가능"이라는 조건이 붙으면 이 라벨.
 
@@ -384,7 +384,7 @@
 
 **정의**: 무게/부피 제한이 있는 배낭에 가치가 있는 물건들을 담아 최대 가치를 얻는 고전 DP 패턴(0/1 배낭, 무한 배낭 등).
 
-**대표 예시**: "평범한 배낭" — 백준(BOJ) — https://www.acmicpc.net/problem/12865
+**대표 예시**: "Partition Equal Subset Sum" — LeetCode — https://leetcode.com/problems/partition-equal-subset-sum/ (0/1 배낭 문제의 대표적인 응용 변형)
 
 **판별기준**: "제한된 용량 안에서 선택 조합의 최적화"라는 틀이 명확하면 이 라벨, 그렇지 않은 일반적인 DP는 **DP 기초**.
 
@@ -394,7 +394,7 @@
 
 **정의**: 수열에서 순서를 유지하며 값이 계속 증가하는 부분 수열 중 가장 긴 것을 찾는 고전 DP 패턴(LIS).
 
-**대표 예시**: "가장 긴 증가하는 부분 수열" — 백준(BOJ) — https://www.acmicpc.net/problem/11053
+**대표 예시**: "Longest Increasing Subsequence" — LeetCode — https://leetcode.com/problems/longest-increasing-subsequence/ (LIS 문제 그 자체를 다루는 정확한 대표 문제)
 
 **판별기준**: "부분 수열의 증가 조건"이 핵심이면 이 라벨. O(n log n) 최적화(이분 탐색 활용)까지 이 라벨 범위로 본다.
 
@@ -566,7 +566,7 @@
 
 **정의**: 접두사·접미사가 겹치는 정보를 미리 계산해, 긴 문자열 안에서 패턴 문자열을 선형 시간에 찾는 문자열 매칭 알고리즘.
 
-**대표 예시**: "찾기" — 백준(BOJ) — https://www.acmicpc.net/problem/1786
+**대표 예시**: "Find the Index of the First Occurrence in a String" — LeetCode — https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/ (구 strStr() 문제 — KMP로 패턴 매칭을 구현하는 대표 문제)
 
 **판별기준**: 단순 문자열 다루기가 아니라 "패턴을 빠르게 찾는 알고리즘 자체"가 핵심이면 이 라벨.
 
@@ -598,7 +598,7 @@
 
 **정의**: 다각형의 넓이를 계산(신발끈 공식 등)하거나, 두 선분이 교차하는지 판별하는 등 기하 공식·판정 위주의 유형.
 
-**대표 예시**: "다각형의 넓이" — 백준(BOJ) — https://www.acmicpc.net/problem/2166 (신발끈 공식을 그대로 적용하는 대표 입문 문제 — 문제 번호는 방문해 재확인 권장)
+**대표 예시**: "Square Pool" — Codeforces — https://codeforces.com/problemset/problem/2120/B (Codeforces 공식 API의 `geometry` 태그로 분류된 좌표 기하 계산 문제 — 신발끈 공식/선분 교차와의 정확한 부합 여부는 문제를 열어 직접 확인 권장)
 
 **판별기준**: 특정 공식(신발끈 공식, CCW 판정 등)을 직접 적용하는 것이 핵심이면 이 라벨, 더 폭넓은 기하 알고리즘 설계가 필요하면 **기하**.
 
